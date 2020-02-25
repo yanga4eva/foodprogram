@@ -16,7 +16,7 @@ class NameInput extends React.Component {
 
 nextPath(path) {
   this.props.history.push(path)
-    fetch("https://www.familysearch.org/service/discovery/allaboutme/treesurnamecount/" + this.state.surname, {method: "get", headers: { "Authorization": "Bearer 78823ba3-3b18-4a93-9067-69be949d55c2-prod"}})
+    fetch("https://www.familysearch.org/service/discovery/allaboutme/treesurnamecount/" + this.state.surname, {method: "get", headers: { "Authorization": "Bearer d80d96e4-ec2d-4e87-b971-789d2efc4426-prod"}})
       .then(res => res.json())
       .then(json => {
         this.setState ({

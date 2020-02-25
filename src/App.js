@@ -11,7 +11,7 @@ function App() {
       <Body />
       <br />
 
-      <Route path="/country-info" exact component={CountryInfo} />
+      <Route path="/country-info" component={CountryInfo} />
     </Router>
   );
 }
