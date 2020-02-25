@@ -10,7 +10,8 @@ class NameInput extends React.Component {
         this.state = { 
         inputs: [],
         data: [],
-        isLoaded: false
+        isLoaded: false,
+        change: true
     }
 }
 
