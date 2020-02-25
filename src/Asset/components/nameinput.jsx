@@ -11,7 +11,6 @@ class NameInput extends React.Component {
         inputs: [],
         data: [],
         isLoaded: false,
-        change: true
     }
 }
 
