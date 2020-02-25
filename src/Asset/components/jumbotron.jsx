@@ -10,11 +10,7 @@ class JumbotronHeader extends Component {
             <>
             <Jumbotron fluid>
             <Container>
-                <h1>Homeland Food Party Kit</h1>
-                <br />
-                <p>Guest Names</p>
-
-                <NameInput />
+                <h1>Homeland Food Party Kit</h1>               
             </Container>
         </Jumbotron>
         </>

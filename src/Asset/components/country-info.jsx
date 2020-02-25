@@ -2,29 +2,34 @@ import React, { Component } from 'react';
 import NameInput from './nameinput'
 
 class CountryInfo extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            data: []
-        }
-    }
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         data: []
+    //     }
+    // }
 
-    surnameFetch () {
-        fetch("https://www.familysearch.org/service/discovery/allaboutme/treesurnamecount/Collings", {method: "get", headers: { "Authorization": "Bearer e97def09-df3d-41cd-b04f-be9ca03cbc75-prod"}})
-            .then(res => res.json())
-            .then(json => {
-                this.setState ({
-                    data: json
-                })
-                })
-          
-      }
+    
 
     render() {
-        return ( 
-            <h1>Data is Loaded</h1>
-         );
+        console.log(this.props.data)
+        console.log(this.props.isLoadedData)
+        const countries = this.props.data
+        const isLoaded = this.props.isLoadedData
+        if (!isLoaded) {
+            return (
+                <div> { }</div>
+            )
+        }
+        else {
+            return (
+            <div>
+                {countries.map((input, index) => <li key={index}>{input.name} ({input.count})</li>)}
+            </div>
+         
+         )
     }
 }
+ }
  
 export default CountryInfo;
