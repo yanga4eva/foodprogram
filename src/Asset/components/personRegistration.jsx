@@ -48,6 +48,7 @@ class UserDeatils extends React.Component {
                     id="feFirstName"
                     placeholder="Chioma"
                     value= {this.state.firstname}
+                    onChange={ e => this.setState({ firstname : e.target.value }) }
                   />
                 </Col>
                 {/* Last Name */}
@@ -57,6 +58,7 @@ class UserDeatils extends React.Component {
                     id="feLastName"
                     placeholder="Segun"
                     value= {this.state.lastname}
+                    onChange={ e => this.setState({ lastname : e.target.value }) }
                   />
                 </Col>
               </Row>
@@ -69,6 +71,8 @@ class UserDeatils extends React.Component {
                     placeholder="Segun"
                     onChange={() => {}}
                     value= {this.state.fathersFirstName}
+                    onChange={ e => this.setState({ fathersFirstName : e.target.value }) }
+                    
                   />
                 </Col>
                 {/* Fathers Last Name */}
@@ -78,6 +82,7 @@ class UserDeatils extends React.Component {
                     id="faLaName"
                     placeholder="Hassan"
                     value= {this.state.fathersLastName}
+                    onChange={ e => this.setState({ fathersLastName : e.target.value }) }
                   />
                 </Col>
               </Row>
@@ -89,7 +94,7 @@ class UserDeatils extends React.Component {
                     id="MoName"
                     placeholder="Ekaette"
                     value= {this.state.mothersFirstName}
-                    onChange={() => {}}
+                    onChange={ e => this.setState({ mothersFirstName : e.target.value }) }
                   />
                 </Col>
                 {/* Mothers Last Name */}
@@ -99,7 +104,7 @@ class UserDeatils extends React.Component {
                     id="MoLaName"
                     placeholder="Agboh"
                     value= {this.state.mothersLastName}
-                    onChange={() => {}}
+                    onChange={ e => this.setState({ mothersLastName : e.target.value }) }
                   />
                 </Col>
               </Row>
@@ -110,14 +115,14 @@ class UserDeatils extends React.Component {
                   placeholder="Address"
                   value="1234 Main St."
                   value= {this.state.address}
-                  onChange={() => {}}
+                  onChange={ e => this.setState({ address : e.target.value }) }
                 />
               </FormGroup>
               <Row form>
                   {/* State */}
                 <Col md="4" className="form-group">
                   <label htmlFor="feInputState">State</label>
-                  <FormSelect id="feInputState" value= {this.state.stateg}>
+                  <FormSelect id="feInputState" value= {this.state.stateg} onChange={ e => this.setState({ stateg : e.target.value }) }>
                     <option>Choose...</option>
                     <option>Abia</option>
                     <option>Adammawa</option>
@@ -134,6 +139,7 @@ class UserDeatils extends React.Component {
                     placeholder="L.G.A"
                     value= {this.state.lga}
                     onChange={() => {}}
+                    onChange={ e => this.setState({ lga : e.target.value }) }
                   />
                 </Col>
                 {/* Zip Code */}
