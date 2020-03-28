@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 import NameInput from './nameinput'
+import PersonRegistration from './personRegistration'
 import {Container, Jumbotron} from 'react-bootstrap'
-import Header from './header'
+import Header from './kioskHeader'
 
 class Body extends Component {
     state = {  }
@@ -11,7 +12,7 @@ class Body extends Component {
             <>
             <Header />
             <Container>
-                <NameInput />
+                <PersonRegistration />
             </Container>
             </>
          );
