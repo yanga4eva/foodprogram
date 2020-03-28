@@ -24,7 +24,8 @@ class UserDeatils extends React.Component {
   
   insertPerson(path) {
     this.props.history.push(path)
-      fetch("https://fgapiproject.herokuapp.com/person/register", {method: "POST", headers: {'Accept': 'application/json', 'Content-Type': 'application/json'}, body: JSON.stringify({"firstname":"fortunatus"})}.then(res => res.json()))
+      fetch("https://fgapiproject.herokuapp.com/person/register", {method: "POST", headers: {'Accept': 'application/json', 'Content-Type': 'application/json'}, body: JSON.stringify({"firstname":"fortunatus"})}.then(res => res.json()).then(response => console.log('Success:', JSON.stringify(response)))
+      .catch(error => console.error('Error:', error)))
        }
 
     render() { 
