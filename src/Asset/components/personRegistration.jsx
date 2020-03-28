@@ -19,17 +19,17 @@ import {
 class UserDeatils extends React.Component {
     constructor(props){
       super(props)
-      this.state = {}
+      this.state = []
+      data = this.state
       }
   
   insertPerson(path) {
     this.props.history.push(path)
-      fetch("http://fgapiproject.herokuapp.com/person/register", {method: "POST", headers: {'Accept': 'application/json', 'Content-Type': 'application/json'}, body: JSON.stringify(this.state)})
+      fetch("http://fgapiproject.herokuapp.com/person/register", {method: "POST", headers: {'Accept': 'application/json', 'Content-Type': 'application/json'}, body:JSON.stringify(data)})
        }
 
     render() { 
     const title = "Person Registration"
-    console.log(this.state.firstname)
     return(
   <Card small className="mb-4">
     <CardHeader className="border-bottom">
