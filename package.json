@@ -6,15 +6,13 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
-    "acorn": ">=7.1.1",
     "bootstrap": "^4.4.1",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "shards-react": "^1.0.3",
-    "minimist": ">=1.2.2"
+    "shards-react": "^1.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,10 +22,6 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  },
-  "engines": {
-    "node": "13.8.0",
-    "npm": ">=6.14.0"
   },
   "browserslist": {
     "production": [
