@@ -25,8 +25,7 @@ class UserDeatils extends React.Component {
       
       }
   
-  insertPerson(event) {
-    e.preventDefault()
+  insertPerson() {
       fetch("https://fgapiproject.herokuapp.com/person/register", {method: "POST", headers: {Accept: 'application/json', 'Content-Type': 'application/json'}, body: JSON.stringify({"firstname":"fortunatus"})}.then(response => response.json()))
        }
 
