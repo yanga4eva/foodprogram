@@ -33,9 +33,9 @@ class UserDeatils extends React.Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: ({
+      body: {
         "firstname":"fortunatus"
-      })
+      }
     })
     .then(res => res.json())
     .then(data => console.log(data))
