@@ -25,7 +25,8 @@ class UserDeatils extends React.Component {
       
       }
   
-  insertPerson(path) {
+  insertPerson(event) {
+    event.preventDefault();
     fetch('http://fgapiproject.herokuapp.com/person/register', {
       method: 'POST',
       headers: {
