@@ -142,7 +142,7 @@ class UserDeatils extends React.Component {
                   <RangePicker />
                 </Col>
               </Row>
-              <Button onClick={() => this.insertPerson()} type="submit">Register</Button>
+              <Button onClick={() => this.insertPerson()}>Register</Button>
             </Form>
           </Col>
         </Row>
