@@ -20,22 +20,32 @@ class UserDeatils extends React.Component {
     constructor(props){
       super(props)
       this.state = {
+        firstname: "",
+        lastname: "",
+        fathersfirstname: '',
+        fatherslastname:'',
+        mothersfirstname: '',
+        motherslastname: '',
+        address: '',
+        stateg: '',
+        lga:'',
         isLoaded: false,
+        
       }
       
       }
   
   async insertPerson() {
     console.log(this.state)
+    let data = this.state
     try {
       let result = await fetch ('https://fgapiproject.herokuapp.com/person/register', {
-        method: 'post',
-        mode: 'no-cors',
+        method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-type': 'application/json'
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(this.state)
+        body: JSON.stringify(data)
       })
       console.log('Result: ' + result)
     } catch(e) {
@@ -63,6 +73,8 @@ class UserDeatils extends React.Component {
                     name="firstname"
                     id="feFirstName"
                     placeholder="Chioma"
+                    type="text"
+                    onChange={(data) => {this.setState({firstname:data.target.value})}}
                     value= {this.state.firstname}
                   />
                 </Col>
@@ -74,6 +86,7 @@ class UserDeatils extends React.Component {
                     id="feLastName"
                     placeholder="Segun"
                     value= {this.state.lastname}
+                    onChange={(data) => {this.setState({lastname:data.target.value})}}
                   />
                 </Col>
               </Row>
@@ -82,19 +95,21 @@ class UserDeatils extends React.Component {
                 <Col md="6" className="form-group">
                   <label htmlFor="feFaName">Fathers First Name</label>
                   <FormInput
+                  name="fathersfirstname"
                     id="faName"
                     placeholder="Segun"
-                    onChange={() => {}}
                     value= {this.state.fathersfirstname}
+                    onChange={(data) => {this.setState({fathersfirstname:data.target.value})}}
                   />
                 </Col>
                 {/* Fathers Last Name */}
                 <Col md="6" className="form-group">
                   <label htmlFor="feFaName">Fathers Last Name</label>
                   <FormInput
+                    name="fatherslastname"
                     id="faLaName"
                     placeholder="Hassan"
-                    onChange={() => {}}
+                    onChange={(data) => {this.setState({fatherslastname:data.target.value})}}
                     value= {this.state.fatherslastname}
                   />
                 </Col>
@@ -104,9 +119,10 @@ class UserDeatils extends React.Component {
                 <Col md="6" className="form-group">
                   <label htmlFor="feFaName">Mothers First Name</label>
                   <FormInput
+                    name="mothersfirstname"
                     id="MoName"
                     placeholder="Ekaette"
-                    onChange={() => {}}
+                    onChange={(data) => {this.setState({mothersfirstname:data.target.value})}}
                     value= {this.state.mothersfirstname}
                   />
                 </Col>
@@ -114,9 +130,10 @@ class UserDeatils extends React.Component {
                 <Col md="6" className="form-group">
                   <label htmlFor="feFaName">Mothers Last Name</label>
                   <FormInput
+                    name="motherslastname"
                     id="MoLaName"
                     placeholder="Agboh"
-                    onChange={() => {}}
+                    onChange={(data) => {this.setState({motherslastname:data.target.value})}}
                     value= {this.state.motherslastname}
                   />
                 </Col>
@@ -124,9 +141,10 @@ class UserDeatils extends React.Component {
               <FormGroup>
                 <label htmlFor="feAddress">Address</label>
                 <FormInput
+                  name="address"
                   id="feAddress"
                   placeholder="Address"
-                  onChange={() => {}}
+                  onChange={(data) => {this.setState({address:data.target.value})}}
                   value= {this.state.address}
                 />
               </FormGroup>
@@ -134,7 +152,7 @@ class UserDeatils extends React.Component {
                   {/* State */}
                 <Col md="4" className="form-group">
                   <label htmlFor="feInputState">State</label>
-                  <FormSelect id="feInputState" value= {this.state.stateg}>
+                  <FormSelect id="feInputState" name="stateg" value= {this.state.stateg} onChange={(data) => {this.setState({stateg:data.target.value})}}>
                     <option>Choose...</option>
                     <option>Abia</option>
                     <option>Adammawa</option>
@@ -147,9 +165,10 @@ class UserDeatils extends React.Component {
                 <Col md="6" className="form-group">
                   <label htmlFor="feCity">Local Government Area</label>
                   <FormInput
+                    name="lga"
                     id="feCity"
                     placeholder="L.G.A"
-                    onChange={() => {}}
+                    onChange={(data) => {this.setState({lga:data.target.value})}}
                     value= {this.state.lga}
                   />
                 </Col>
@@ -167,6 +186,11 @@ class UserDeatils extends React.Component {
     </ListGroup>
   </Card>
     )}
+
+    handleChange(e) {
+      this.setState({ value: e.target.value });
+    }
+
     }
 
 
