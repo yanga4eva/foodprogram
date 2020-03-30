@@ -34,9 +34,7 @@ class UserDeatils extends React.Component {
           'Accept': 'application/json',
           'Content-type': 'application/json'
         },
-        body: JSON.stringify({
-          'firstname': 'fortunatus'
-        })
+        body: JSON.stringify(this.state)
       })
       console.log('Result: ' + result)
     } catch(e) {
