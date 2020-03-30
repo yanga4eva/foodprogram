@@ -62,14 +62,17 @@ class UserDeatils extends React.Component {
                     name="firstname"
                     id="feFirstName"
                     placeholder="Chioma"
+                    value= {this.state.firstname}
                   />
                 </Col>
                 {/* Last Name */}
                 <Col md="6" className="form-group">
                   <label htmlFor="feLastName">Last Name</label>
                   <FormInput
+                    name="lastname"
                     id="feLastName"
                     placeholder="Segun"
+                    value= {this.state.lastname}
                   />
                 </Col>
               </Row>
@@ -81,6 +84,7 @@ class UserDeatils extends React.Component {
                     id="faName"
                     placeholder="Segun"
                     onChange={() => {}}
+                    value= {this.state.fathersfirstname}
                   />
                 </Col>
                 {/* Fathers Last Name */}
@@ -89,6 +93,8 @@ class UserDeatils extends React.Component {
                   <FormInput
                     id="faLaName"
                     placeholder="Hassan"
+                    onChange={() => {}}
+                    value= {this.state.fatherslastname}
                   />
                 </Col>
               </Row>
@@ -100,6 +106,7 @@ class UserDeatils extends React.Component {
                     id="MoName"
                     placeholder="Ekaette"
                     onChange={() => {}}
+                    value= {this.state.mothersfirstname}
                   />
                 </Col>
                 {/* Mothers Last Name */}
@@ -109,6 +116,7 @@ class UserDeatils extends React.Component {
                     id="MoLaName"
                     placeholder="Agboh"
                     onChange={() => {}}
+                    value= {this.state.motherslastname}
                   />
                 </Col>
               </Row>
@@ -117,15 +125,15 @@ class UserDeatils extends React.Component {
                 <FormInput
                   id="feAddress"
                   placeholder="Address"
-                  value="1234 Main St."
                   onChange={() => {}}
+                  value= {this.state.address}
                 />
               </FormGroup>
               <Row form>
                   {/* State */}
                 <Col md="4" className="form-group">
                   <label htmlFor="feInputState">State</label>
-                  <FormSelect id="feInputState">
+                  <FormSelect id="feInputState" value= {this.state.stateg}>
                     <option>Choose...</option>
                     <option>Abia</option>
                     <option>Adammawa</option>
@@ -141,6 +149,7 @@ class UserDeatils extends React.Component {
                     id="feCity"
                     placeholder="L.G.A"
                     onChange={() => {}}
+                    value= {this.state.lga}
                   />
                 </Col>
                 {/* Zip Code */}
