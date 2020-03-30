@@ -26,6 +26,7 @@ class UserDeatils extends React.Component {
       }
   
   async insertPerson() {
+    console.log(this.state)
     try {
       let result = await fetch ('https://fgapiproject.herokuapp.com/person/register', {
         method: 'post',
