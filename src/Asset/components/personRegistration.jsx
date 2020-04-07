@@ -86,7 +86,7 @@ class UserDeatils extends React.Component {
                   <FormInput
                     name="firstname"
                     id="feFirstName"
-                    pl0aceholder="Chioma"
+                    placeholder="Chioma"
                     type="text"
                     onChange={(data) => {this.setState({firstname:data.target.value})}}
                     value= {this.state.firstname}

@@ -17,14 +17,7 @@ class NameInput extends React.Component {
 
 nextPath(path) {
   this.props.history.push()
-  fetch("https://aksgapi.herokuapp.com/person/food", {method: "get"})
-	      .then(res => res.json())
-      	.then(json => {
-        this.setState ({
-        recipe: json
-      })
-      console.log(this.state.recipe)
-    })
+  
     fetch("https://strategicsolutions.herokuapp.com/homelands/search?name" + this.state.surname, {method: "get"})
       .then(res => res.json())
       .then(json => {
@@ -36,13 +29,21 @@ nextPath(path) {
       	.then(json => {
         this.setState ({
         data: json,
+        homeMatch: json.countries[0].name,
         isLoaded: true
       })
-      const country = this.state.data.countries[0]
-      const {surname, countries} = this.state.data
-    console.log(this.state.data)
+      const country = this.state.data.countries[0].name
+      const countryM = this.state.data
+    console.log(this.state.homeMatch)
     })              
 })
+fetch("https://aksgapi.herokuapp.com/person/food/Nigeria", {method: "get"})
+	      .then(res => res.json())
+      	.then(json => {
+        this.setState ({
+        recipe: json
+      })
+    })
 }
 
 surnameinput(event) {
