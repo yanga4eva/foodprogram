@@ -1,17 +1,21 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import logo from './logo.svg';
+import Partyprint from './Asset/components/partypdf';
 import Body from './Asset/components/body'
+import Header from './Asset/components/header'
+import NameInput from './Asset/components/nameinput'
+import Nav from './Asset/components/header'
 
-import CountryInfo from './Asset/components/country-info'
+import Nameinput from './Asset/components/nameinput'
 
 function App() {
   return (
     <Router>
-      <Body />
+      <Nav />
       <br />
-
-      <Route path="/country-info" component={CountryInfo} />
+    
+      <Route exact path="/" component={NameInput} />
+      <Route path="/partypdf" component={Partyprint} />
     </Router>
   );
 }

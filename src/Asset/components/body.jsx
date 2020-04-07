@@ -11,7 +11,6 @@ class Body extends Component {
             <>
             <Header />
             <Container>
-                <PersonRegistration />
             </Container>
             </>
          );

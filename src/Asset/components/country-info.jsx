@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NameInput from './nameinput'
+import 'bootstrap/dist/css/bootstrap.css'
 
 class CountryInfo extends Component {
     // constructor(props) {
@@ -12,8 +12,6 @@ class CountryInfo extends Component {
     
 
     render() {
-        console.log(this.props.data)
-        console.log(this.props.isLoadedData)
         const countries = this.props.data
         const isLoaded = this.props.isLoadedData
         if (!isLoaded) {
@@ -23,7 +21,7 @@ class CountryInfo extends Component {
         }
         else {
             return (
-            <div>
+                <div className="col 9">
                 {countries.map((input, index) => <li key={index}>{input.name} ({input.count})</li>)}
             </div>
          

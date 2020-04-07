@@ -3,29 +3,46 @@ import {Form, Row, Col, Button, link} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import {Route, withRouter} from 'react-router-dom'
 import CountryInfo from './country-info'
+import Partyprint from './partypdf';
 
 class NameInput extends React.Component {
   constructor(props){
     super(props)
     this.state = { 
       inputs: [],
-      data: [],
+      data: {},
       isLoaded: false,
     }
   }
 
 nextPath(path) {
   this.props.history.push(path)
-    fetch("https://www.familysearch.org/service/discovery/allaboutme/treesurnamecount/" + this.state.surname, {method: "get", headers: { "Authorization": "Bearer d80d96e4-ec2d-4e87-b971-789d2efc4426-prod"}})
+    fetch("http://strategicsolutions.herokuapp.com/homelands/search?name" + this.state.surname, {method: "get"})
       .then(res => res.json())
       .then(json => {
+        this.setState ({
+        token: json.token,
+      })
+      fetch("https://www.familysearch.org/service/discovery/allaboutme/treesurnamecount/" + this.state.surname, {method: "get", headers: { "Authorization": "Bearer " + this.state.token}})
+	      .then(res => res.json())
+      	.then(json => {
         this.setState ({
         data: json,
         isLoaded: true
       })
+      const country = this.state.data.countries[0]
+      fetch("https://aksgapi.herokuapp/com/person/food", {method: "get"})
+	      .then(res => res.json())
+      	.then(json => {
+        this.setState ({
+        recipe: json
+      })
       const {surname, countries} = this.state.data
+    })
+    console.log(this.state.data)
     })              
-  }
+  })
+}
 
 surnameinput(event) {
   const target = event.target
@@ -71,14 +88,18 @@ render() {
   else {
     return ( 
       <>
-        <div><Button onClick={ () => this.appendInput()} variant='success'>Add Guest </Button>{' '}
-            <Button onClick={() => this.nextPath()} variant='primary'>Start Party!</Button>
-        </div>
+        
         <div>
 
           <br />
+          <div className="container">
           <h1>{surname}</h1>
         <CountryInfo data = {countries} isLoadedData = {this.state.isLoaded} />
+        </div>
+
+        <br /><br />
+        <h3>Country Recipe</h3>
+        <Partyprint data={countries} food={this.state.recipe} />
         </div>
       </>
     )}

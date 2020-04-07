@@ -3,6 +3,12 @@ import { Navbar, Nav, NavItem, NavDropdown, NavbarBrand, NavLink } from 'react-b
 import 'bootstrap/dist/css/bootstrap.css'
 import Jumbotron from './jumbotron'
 import logo from '../img/fs-logo.png'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 class Header extends Component {
     state = {  }
@@ -22,7 +28,7 @@ class Header extends Component {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ml-auto">
-						<Nav.Link href="#home">Invite Friend</Nav.Link>
+						<Link to="/partypdf">Invite Friend</Link>
 						<Nav.Link href="#link">Request Friends Surname</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
