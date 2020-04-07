@@ -11,12 +11,20 @@ class NameInput extends React.Component {
     this.state = { 
       inputs: [],
       data: {},
-      isLoaded: false,
+      isLoaded: false
     }
   }
 
 nextPath(path) {
-  this.props.history.push(path)
+  this.props.history.push()
+  fetch("https://aksgapi.herokuapp.com/person/food", {method: "get"})
+	      .then(res => res.json())
+      	.then(json => {
+        this.setState ({
+        recipe: json
+      })
+      console.log(this.state.recipe)
+    })
     fetch("https://strategicsolutions.herokuapp.com/homelands/search?name" + this.state.surname, {method: "get"})
       .then(res => res.json())
       .then(json => {
@@ -31,17 +39,10 @@ nextPath(path) {
         isLoaded: true
       })
       const country = this.state.data.countries[0]
-      fetch("https://aksgapi.herokuapp/com/person/food", {method: "get"})
-	      .then(res => res.json())
-      	.then(json => {
-        this.setState ({
-        recipe: json
-      })
       const {surname, countries} = this.state.data
-    })
     console.log(this.state.data)
     })              
-  })
+})
 }
 
 surnameinput(event) {
@@ -54,6 +55,7 @@ surnameinput(event) {
 render() { 
   const {countries, surname} = this.state.data
   const {isLoaded} = this.state
+  const foodrecipe = this.state.recipe
   if (!isLoaded) {
     return (
       <div className="col-9">

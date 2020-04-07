@@ -4,17 +4,22 @@ import ReactToPrint from 'react-to-print';
 class ComponentToPrint extends React.Component {
   render() {
       const data = this.props.printdata[0]
-      const recipe = this.props.recipe
+      const {name, history, recipe, procedure} = this.props.recipe
+
       console.log(recipe)
-      console.log(data)
     return (
         <>
-        <br /><br />
         <div className="col 9">
-                {data.name }
-            </div>
-            <div className="col 9">
-                { }
+                <h3>Dish Name : {name}</h3>
+                <br />
+                <h4>History</h4>
+                <p>{history}</p>
+            <br />
+                <h4>Recipe</h4>
+                <p>{recipe}</p>
+            <br />
+                <h4>Procedure</h4>
+                <p>{procedure}</p>
             </div>
             </>
     );
@@ -24,13 +29,14 @@ class ComponentToPrint extends React.Component {
 class Partyprint extends React.Component {
     render() {
         const data = this.props.data
+        const food = this.props.food
       return (
         <div>
           <ReactToPrint
             trigger={() => <a href="#">Print this out</a>}
             content={() => this.componentRef}
           />
-          <ComponentToPrint printdata = {data} ref={el => (this.componentRef = el)} />
+          <ComponentToPrint printdata = {data} recipe={food} ref={el => (this.componentRef = el)} />
         </div>
       );
     }
