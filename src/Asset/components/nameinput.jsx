@@ -17,7 +17,7 @@ class NameInput extends React.Component {
 
 nextPath(path) {
   this.props.history.push(path)
-    fetch("http://strategicsolutions.herokuapp.com/homelands/search?name" + this.state.surname, {method: "get"})
+    fetch("https://strategicsolutions.herokuapp.com/homelands/search?name" + this.state.surname, {method: "get"})
       .then(res => res.json())
       .then(json => {
         this.setState ({
