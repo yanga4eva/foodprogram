@@ -35,12 +35,13 @@ class CountryInfo extends Component {
         else {
             if (!loaded) {
             return (
-                <div className="containter">
+                <div className="col 9">
                 {countries.map((input, index) => <li onClick= {() => this.recipe({input})}  key={index}>{input.name} ({input.count})</li>)}
             </div>
          
          )
             } else {
+                if (this.state.recipe ) {
                 return(
                     <>
                     <div>
@@ -51,7 +52,16 @@ class CountryInfo extends Component {
                     </>
                     
                 )
+            } else {
+                return (
+                <div>
+                    {countries.map((input, index) => <li onClick= {() => this.recipe({input})}  key={index}>{input.name} ({input.count})</li>)}
+                    <br /> <br />
+                    No Recipe for country
+                </div>
+                )
             }
+        }
                 
     }
 }
