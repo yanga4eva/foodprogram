@@ -42,7 +42,14 @@ class CountryInfo extends Component {
          )
             } else {
                 return(
+                    <>
+                    <div>
+                    {countries.map((input, index) => <li onClick= {() => this.recipe({input})}  key={index}>{input.name} ({input.count})</li>)}
+                    <br /> <br />
                     <Partyprint data={countries} recipe={this.state.recipe} />
+                    </div>
+                    </>
+                    
                 )
             }
                 
