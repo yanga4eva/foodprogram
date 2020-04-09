@@ -11,39 +11,36 @@ class NameInput extends React.Component {
     this.state = { 
       inputs: [],
       data: {},
-      isLoaded: false
+      isLoaded: false,
+      homeMatch: {},
+      recipe: {}
     }
   }
 
-nextPath(path) {
+ async nextPath(path) {
   this.props.history.push()
   
-    fetch("https://strategicsolutions.herokuapp.com/homelands/search?name" + this.state.surname, {method: "get"})
+    await fetch("https://strategicsolutions.herokuapp.com/homelands/search?name" + this.state.surname)
       .then(res => res.json())
       .then(json => {
         this.setState ({
         token: json.token,
       })
-      fetch("https://www.familysearch.org/service/discovery/allaboutme/treesurnamecount/" + this.state.surname, {method: "get", headers: { "Authorization": "Bearer " + this.state.token}})
+       fetch("https://www.familysearch.org/service/discovery/allaboutme/treesurnamecount/" + this.state.surname, {method: "get", headers: { "Authorization": "Bearer " + this.state.token}})
 	      .then(res => res.json())
       	.then(json => {
         this.setState ({
         data: json,
-        homeMatch: json.countries[0].name,
+        homeMatch: json.countries[0],
         isLoaded: true
       })
-      const country = this.state.data.countries[0].name
-      const countryM = this.state.data
-    console.log(this.state.homeMatch)
-    })              
+
 })
-fetch("https://aksgapi.herokuapp.com/person/food/Nigeria", {method: "get"})
-	      .then(res => res.json())
-      	.then(json => {
-        this.setState ({
-        recipe: json
-      })
-    })
+      
+  })
+  
+
+
 }
 
 surnameinput(event) {
@@ -97,12 +94,12 @@ render() {
           <br />
           <div className="container">
           <h1>{surname}</h1>
-        <CountryInfo data = {countries} isLoadedData = {this.state.isLoaded} />
+        <CountryInfo data = {countries} country={this.state.homeMatch} isLoadedData = {this.state.isLoaded}  />
         </div>
 
         <br /><br />
-        <h3>Country Recipe</h3>
-        <Partyprint data={countries} food={this.state.recipe} />
+        {/* <h3>Country Recipe</h3>
+        <Partyprint data={countries} recipe={this.state.recipe} /> */}
         </div>
       </>
     )}
