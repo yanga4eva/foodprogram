@@ -80,7 +80,7 @@ render() {
           </div>
           <br />
           <div>
-            {/* <Button onClick={ () => this.appendInput()} variant='success'>Add Guest </Button>{' '} */}
+            <Button onClick={ () => this.appendInput()} variant='success'>Add Guest </Button>{' '}
                 <Button onClick={() => this.nextPath()} variant='primary'>Start Party!</Button>
           </div>
       </Form>

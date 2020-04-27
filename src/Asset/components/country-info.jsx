@@ -39,7 +39,7 @@ class CountryInfo extends Component {
             if (!loaded) {
             return (
                 <div className="col-2">
-                {countries.map((input, index) => <li onClick= {() => this.recipe({input})}  key={index}>{input.name} ({input.count})</li>)}
+                {countries.map((input, index) => <li onClick= {() => this.recipe({input})}  key={index}><a href="">{input.name} ({input.count})</a></li>)}
             </div>
          
          )
