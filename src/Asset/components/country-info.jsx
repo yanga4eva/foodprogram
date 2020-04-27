@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NameInput from './nameinput'
+import Link from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import Partyprint from './partypdf';
 
@@ -19,6 +20,8 @@ class CountryInfo extends Component {
         recipe: json,
         isLoaded : true
       })
+      console.log(index.input.name)
+      window.open("https://www.countryreports.org/country/" + (index.input.name) + "/recipes.htm")
       })              
     }
 
@@ -35,7 +38,7 @@ class CountryInfo extends Component {
         else {
             if (!loaded) {
             return (
-                <div className="col 9">
+                <div className="col-2">
                 {countries.map((input, index) => <li onClick= {() => this.recipe({input})}  key={index}>{input.name} ({input.count})</li>)}
             </div>
          
@@ -44,9 +47,11 @@ class CountryInfo extends Component {
                 if (this.state.recipe ) {
                 return(
                     <>
-                    <div>
+                    <div className="col-4">
                     {countries.map((input, index) => <li onClick= {() => this.recipe({input})}  key={index}>{input.name} ({input.count})</li>)}
                     <br /> <br />
+                    </div>
+                    <div>
                     <Partyprint data={countries} recipe={this.state.recipe} />
                     </div>
                     </>
@@ -54,7 +59,7 @@ class CountryInfo extends Component {
                 )
             } else {
                 return (
-                <div>
+                <div className="col-4">
                     {countries.map((input, index) => <li onClick= {() => this.recipe({input})}  key={index}>{input.name} ({input.count})</li>)}
                     <br /> <br />
                     No Recipe for country

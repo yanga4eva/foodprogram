@@ -6,7 +6,6 @@ import Header from './Asset/components/header'
 import NameInput from './Asset/components/nameinput'
 import Nav from './Asset/components/header'
 
-import Nameinput from './Asset/components/nameinput'
 
 function App() {
   return (

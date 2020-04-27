@@ -26,12 +26,12 @@ class Header extends Component {
                             />
                 </Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav">
+				{/* <Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ml-auto">
 						<Link to="/partypdf">Invite Friend</Link>
 						<Nav.Link href="#link">Request Friends Surname</Nav.Link>
 					</Nav>
-				</Navbar.Collapse>
+				</Navbar.Collapse> */}
 			</Navbar>
 
 
