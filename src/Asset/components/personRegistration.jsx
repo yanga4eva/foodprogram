@@ -35,6 +35,8 @@ class UserDeatils extends React.Component {
         isLoaded: false,
         
       }
+
+      
       
       this.handleStartDateChange = this.handleStartDateChange.bind(this);
 

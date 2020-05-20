@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import NameInput from './nameinput'
+import {Col} from 'react-bootstrap'
+import {Dropdown, Menu, Item} from 'react-bootstrap'
 import Link from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import Partyprint from './partypdf';
@@ -8,9 +10,25 @@ class CountryInfo extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isLoaded : false
+            isLoaded : false,
+            surname : false,
+            surnameData : {},
+            selectedValue: String
         }
     }
+
+    checkSurname(data) {
+        fetch("https://www.familysearch.org/service/discovery/allaboutme/treesurnamecount/" + data, {method: "get", headers: { "Authorization": "Bearer " + this.props.token}})
+          .then(res => res.json())
+          .then(json => {
+            this.setState({
+                surnameData: json,
+                surname: true
+            })
+            console.log(this.state.surnameData)
+    }
+          )}
+
 
     recipe(index) {
         fetch("https://aksgapi.herokuapp.com/person/food/" + (index.input.name))
@@ -26,7 +44,9 @@ class CountryInfo extends Component {
     }
 
     render() {
-        const countries = this.props.data
+        // const countries = this.props.data
+        const {countries} = this.state.surnameData
+        const surname = this.props.surnames
         const propload = this.props.isLoadedData
         const loaded = this.state.isLoaded
         const {recipe} = this.state
@@ -38,35 +58,36 @@ class CountryInfo extends Component {
         else {
             if (!loaded) {
             return (
-                <div className="col-2">
-                {countries.map((input, index) => <li onClick= {() => this.recipe({input})}  key={index}><a href="#">{input.name} ({input.count})</a></li>)}
-            </div>
-         
-         )
-            } else {
-                if (this.state.recipe ) {
-                return(
-                    <>
-                    <div className="col-4">
-                    {countries.map((input, index) => <li onClick= {() => this.recipe({input})}  key={index}>{input.name} ({input.count})</li>)}
-                    <br /> <br />
-                    </div>
-                    <div>
-                    <Partyprint data={countries} recipe={this.state.recipe} />
-                    </div>
-                    </>
+                <>
+                
+            <Dropdown>
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+              Select Surname
+            </Dropdown.Toggle>
+          
+            <Dropdown.Menu>
+              {surname.map((input,index) => <Dropdown.Item key={index} role="menuitem"  value={input} onSelect={(data) => this.checkSurname(input)} >{input}</Dropdown.Item>)}
+            </Dropdown.Menu>
+          </Dropdown>
+          <br /><br />
+          {this.state.surname ? 
+            <Row>
+            <Col xs="3">.col-3</Col>
+            <Col xs="auto">.col-auto - variable width content</Col>
+            <Col xs="3">.col-3</Col>
+          </Row>
                     
-                )
-            } else {
-                return (
-                <div className="col-4">
-                    {countries.map((input, index) => <li onClick= {() => this.recipe({input})}  key={index}>{input.name} ({input.count})</li>)}
-                    <br /> <br />
-                    No Recipe for country
-                </div>
-                )
-            }
-        }
+                    <div className="col-4">
+                        <h5></h5>
+                      
+                    {countries.map((input,index) => <li key={index.name}>{input.name}</li>)}
+                    {countries.map((input, index) => <Col key={index.name} xs="3">{input.name}</Col>)}
+                    </div> : <div> {" " }</div>
+          
+         
+          }</>
+    
+            )}
                 
     }
 }
