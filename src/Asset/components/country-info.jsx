@@ -90,7 +90,7 @@ class CountryInfo extends Component {
           
          
           }
-          {this.state.recipe ? <Col ><Partyprint data={countries} recipe={this.state.recipe} /></Col> : <div> {'Sorry We do not have a recipe for the Country Please check the following links' } <a href= '#' onClick={() => this.partnerLink()} > Country Reports</a> </div>}
+          {this.state.recipe ? <Col ><Partyprint data={countries} recipe={this.state.recipe} /></Col> : <div> {'Sorry We do not have a recipe for the Country Please check the following links' } <a href= '#' onClick={() => this.partnerLink()} > Gigi</a><a href= '#' onClick={() => this.partnerLink()} > Country Reports</a> </div>}
           
           </Row></>
     
