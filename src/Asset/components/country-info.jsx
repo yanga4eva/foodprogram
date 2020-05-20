@@ -71,11 +71,7 @@ class CountryInfo extends Component {
           </Dropdown>
           <br /><br />
           {this.state.surname ? 
-            <Row>
-            <Col xs="3">.col-3</Col>
-            <Col xs="auto">.col-auto - variable width content</Col>
-            <Col xs="3">.col-3</Col>
-          </Row>
+          
                     
                     <div className="col-4">
                         <h5></h5>
